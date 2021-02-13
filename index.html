@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		* {
+			margin: 0px;
+			border: 0px;
+			padding: 0px;
+		}
+		body {
+			overflow: hidden;
+		}
+		#musicInfo {
+			user-select:none;
+			cursor:pointer;
+			position: absolute;
+			width:300px;
+			height: 140px;
+			color: #ac4ac0;
+			font-size: 23px;
+			text-shadow:
+			-0.5px -0.5px 0 rgb(150, 97, 199),
+			0.5px -0.5px 0 rgb(150, 97, 199),
+			-0.5px 0.5px 0 rgb(150, 97, 199),
+			0.5px 0.5px 0 rgb(150, 97, 199); 
+		}
+		#musicInfo:hover {
+			color: #c280cf;
+		}
+		#musicInfo #title {
+			position: absolute;
+			left: 30px;
+		}
+	</style>
+	<title>soundBall</title>
+</head>
+<body>
+	<script src="lib/p5.min.js"></script>
+	<script src="lib/p5.sound.min.js"></script>
+	<script src="src/main.js"></script>
+</body>
+</html>
