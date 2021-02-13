@@ -258,7 +258,7 @@ let mediaArt = {
 		particles = [];
 
 		pf.preload = () => {
-			audio.song = loadSound('../src/cosmos.mp3');
+			audio.song = loadSound('./src/cosmos.mp3');
 		}
 		
 		pf.setup = () => {
