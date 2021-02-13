@@ -281,12 +281,10 @@ let mediaArt = {
 		pf.mousePressed = () => {
 			if (audio.song.isPlaying()) {
 				audio.song.stop();
-				background(255);
 			} 
 			else {
 				mediaArt.pri.setAnalyzer();
 				audio.song.play();
-				background(255);
 			}
 		}
 		pf.windowResized = () => {
