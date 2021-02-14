@@ -111,13 +111,13 @@ class Particle {
 		}
 		this.circle.render();
 	}
-	reset(rms=0.1) {
+	reset(rms=10) {
 		this.speed = rms*30
 		this.directionX = random(-1, 1);
 		this.directionY = random(-1, 1);
 		this.circle.x = this.initX;
 		this.circle.y = this.initY;
-		this.circle.size = 10 + rms * 100
+		this.circle.size = 10 + rms * 100;
 	}
 	isOutside() {
 		return windowWidth+this.circle.size < this.circle.x 
@@ -177,7 +177,7 @@ let mediaArt = {
 		},
 		flyingParticles(particles, rms) {
 			particles.forEach(particle => {
-				particle.move(rms);
+				particle.move(rms*10);
 				particle.circle.color = particle.circle
 				.protoProp.color.map((color, i) => {
 					return i < 3 
@@ -187,7 +187,7 @@ let mediaArt = {
 				if(particle.isOutside()) {
 					particle.reset(rms);
 				}
-			})
+			});
 		},
 		setCenterLocation() {
 			this.location.center.x = width / 2;
@@ -208,6 +208,11 @@ let mediaArt = {
 				}, location));
 			}
 			return result;
+		},
+		initParticleSpeed(particles) {
+			particles.forEach(p => {
+				p.speed = 15;
+			});
 		},
 		resetCircleInitLocaltion(location) {
 			let pri = mediaArt.pri;
@@ -266,7 +271,7 @@ let mediaArt = {
 			pri.setAnalyzer();
 			pri.setCenterLocation();
 			rms = audio.analyzer.getLevel();
-			particles = pri.createParticles(location, rms, 500);
+			particles = pri.createParticles(location, rms, 400);
 			pri.setCenterCircle(location, 5);
 			pri.createMusicInfo("natreemu", "- cosmos (youtube link)");
 		}
@@ -285,6 +290,7 @@ let mediaArt = {
 			else {
 				mediaArt.pri.setAnalyzer();
 				audio.song.play();
+				pri.initParticleSpeed(particles);
 			}
 		}
 		pf.windowResized = () => {
